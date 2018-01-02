@@ -1,0 +1,7 @@
+include LICENSE
+include README.rst
+include requirements.txt
+recursive-include smstor/fixtures *
+recursive-include smstor/migrations *
+recursive-include smstor/templates *
+recursive-include smstor/docs *
