@@ -6,6 +6,7 @@ from django.utils import timezone
 from .models import ConfigSMS, SMS
 
 import datetime
+from unittest import skip
 
 class ConfigSMSTestCase(TestCase):
 
@@ -83,6 +84,7 @@ class SMSTestCase(TestCase):
         self.assertEqual(status, False)
         self.assertEqual(msg, "El usuario ha llegado a su máximo de SMS diarios ({}) y/o mensuales ({})".format(config_sms.max_day, config_sms.max_month))
 
+    @skip("Skip send sms")
     def test_send(self):
         user = User.objects.create(
             first_name = "User1322",
@@ -109,12 +111,12 @@ class SMSTestCase(TestCase):
             # Testing send
             config_sms = ConfigSMS.objects.get(user=user)
             config_sms.set_no_limit()
-            # with self.settings(ENABLE_SMS=True):
-            #     with self.settings(DEBUG=True):
-            #         status, msg = sms.send()
-            #         self.assertEqual(sms.status, 'queued')
-            #         self.assertIsNotNone(sms.sid)
-            #         self.assertEqual(status, True)
+            with self.settings(ENABLE_SMS=True):
+                with self.settings(DEBUG=True):
+                    status, msg = sms.send()
+                    self.assertEqual(sms.status, 'queued')
+                    self.assertIsNotNone(sms.sid)
+                    self.assertEqual(status, True)
 
 
     def test_build(self):
