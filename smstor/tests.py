@@ -107,8 +107,8 @@ class SMSTestCase(TestCase):
                 self.assertEqual(msg, "Delivery disabled by setting.ENABLE_SMS flag")
 
             # Testing send
-            # config_sms = ConfigSMS.objects.get(user=user)
-            # config_sms.set_no_limit()
+            config_sms = ConfigSMS.objects.get(user=user)
+            config_sms.set_no_limit()
             # with self.settings(ENABLE_SMS=True):
             #     with self.settings(DEBUG=True):
             #         status, msg = sms.send()
