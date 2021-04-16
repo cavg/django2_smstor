@@ -12,7 +12,7 @@ django-extensions = "==1.9.8"
 twilio = "==6.5.0"
 ipdb = "==0.10.3"
 mock = "==2.0.0"
-django-debug-toolbar = "==1.8"
+django-debug-toolbar = "==1.11.1"
 "a045bd9" = {path = "./smstor/dependencies/django_toolbox-0.4.0.tar.gz"}
 
 
